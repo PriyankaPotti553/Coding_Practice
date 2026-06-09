@@ -21,6 +21,35 @@ class Codechef
 		else{
 		    System.out.println("Not a Palindrome");
 		}
+	}
+}
 
+
+
+//Variable size sliding window practice problem.if a bus can carry weight max 10kg.how many maximum people can travel in that bus.given array
+array[1,5,7,2,9]
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		int[] arr = {1,5,3,1,9};
+		int w = 10;
+		int sum = 0;
+		int ans = 0;
+		int l=0;
+		for(int r=0;r<arr.length;r++){
+		    sum+=arr[r];
+		    while(sum>w){
+		        sum-=arr[l];
+		        l++;
+		    }
+		    ans=Math.max(ans,r-l+1);
+		}
+		System.out.println(ans);
 	}
 }
