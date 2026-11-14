@@ -1,0 +1,20 @@
+class Solution {
+    public int minimumSumSubarray(List<Integer> nums, int l, int r) {
+        int min = Integer.MAX_VALUE;
+        for(int k=l;k<=r;k++){
+            int sum = 0;
+            int le=0;
+            for(int ri=0;ri<nums.size();ri++){
+                sum+=nums.get(ri);
+                if(ri-le+1 == k){
+                    if(sum>0){
+                        min=Math.min(sum,min);
+                    }
+                    sum-=nums.get(le);
+                    le++;
+                }
+            }
+        }
+        return min == Integer.MAX_VALUE ? -1 : min;
+    }
+}
